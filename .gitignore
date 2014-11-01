@@ -1,0 +1,13 @@
+*~
+*.so
+/bin/
+/build/
+/lib/
+/msg_gen/
+/msg/*/
+/ROS_NOBUILD
+/src/hybris_monitor
+/src/*/srv/
+/src/*/msg/
+/srv_gen/
+/srv/*/

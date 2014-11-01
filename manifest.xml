@@ -1,0 +1,16 @@
+<package>
+  <description brief="hybris_monitor">
+
+     hybris_monitor
+
+  </description>
+  <author>Tim Niemueller</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/hybris_monitor</url>
+  <depend package="roscpp"/>
+  <depend package="fawkes_msgs"/>
+  <depend package="continual_planning_executive"/>
+</package>
+
+
