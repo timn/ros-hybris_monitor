@@ -26,6 +26,8 @@
 #include <cstring>
 #include <string>
 
+#include <gtkmm/adjustment.h>
+
 using namespace ros;
 
 /** @class HybrisMonitorGtkWindow "hybris_monitor.h"
@@ -52,6 +54,7 @@ HybrisMonitorGtkWindow::HybrisMonitorGtkWindow(BaseObjectType* cobject,
   builder->get_widget("lab_agent_before", lab_agent_before_);
   builder->get_widget("lab_skill", lab_skill_);
   builder->get_widget("trv_plan", trv_plan_);
+  builder->get_widget("window_plan", window_plan_);
 
   plan_list_ = Gtk::ListStore::create(plan_record_);
   trv_plan_->set_model(plan_list_);
@@ -236,6 +239,9 @@ HybrisMonitorGtkWindow::on_planner_status_cb()
   default: // ignored
     break;
   } 
+
+  Glib::RefPtr<Gtk::Adjustment> adjustment = window_plan_->get_vadjustment();
+  adjustment->set_value(adjustment->get_upper());
 }
 
 
