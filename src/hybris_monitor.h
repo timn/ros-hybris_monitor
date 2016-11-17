@@ -76,6 +76,7 @@ class HybrisMonitorGtkWindow : public Gtk::Window
   Gtk::Label             *lab_agent_now_;
   Gtk::Label             *lab_agent_before_;
   Gtk::TreeView          *trv_plan_;
+  Gtk::ScrolledWindow    *window_plan_;
   Gtk::Label             *lab_skill_;
 
   Glib::RefPtr<Gtk::ListStore> plan_list_;
