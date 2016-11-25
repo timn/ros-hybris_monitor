@@ -152,7 +152,7 @@ HybrisMonitorGtkWindow::get_action_description(std::string action)
 void
 HybrisMonitorGtkWindow::on_planner_status_cb()
 {
-  continual_planning_executive::ContinualPlanningStatus status;
+  continual_planning_msgs::ContinualPlanningStatus status;
 
   {
     boost::mutex::scoped_lock lock(msgmtx_planner_status_);
@@ -167,7 +167,7 @@ HybrisMonitorGtkWindow::on_planner_status_cb()
   if (status.description == "-")  return;
 
   switch(status.component) {
-  case continual_planning_executive::ContinualPlanningStatus::PLANNING:
+  case continual_planning_msgs::ContinualPlanningStatus::PLANNING:
     {
       std::vector<std::string> strs, tmp;
       boost::split(tmp, status.description, boost::is_any_of("\n"));
@@ -185,7 +185,7 @@ HybrisMonitorGtkWindow::on_planner_status_cb()
     }
     break;
 
-  case continual_planning_executive::ContinualPlanningStatus::CURRENT_PLAN:
+  case continual_planning_msgs::ContinualPlanningStatus::CURRENT_PLAN:
     {
       std::vector<std::string> strs, tmp;
       boost::split(tmp, status.description, boost::is_any_of("\n"));
@@ -217,7 +217,7 @@ HybrisMonitorGtkWindow::on_planner_status_cb()
     break;
 
       /*
-  case continual_planning_executive::ContinualPlanningStatus::EXECUTION:
+  case continual_planning_msgs::ContinualPlanningStatus::EXECUTION:
     {
       std::string active_action = get_action_description(status.description);
 
@@ -246,7 +246,7 @@ HybrisMonitorGtkWindow::on_planner_status_cb()
 
 
 void
-HybrisMonitorGtkWindow::planner_status_cb(const continual_planning_executive::ContinualPlanningStatus &status)
+HybrisMonitorGtkWindow::planner_status_cb(const continual_planning_msgs::ContinualPlanningStatus &status)
 {
   {
     boost::mutex::scoped_lock lock(msgmtx_planner_status_);

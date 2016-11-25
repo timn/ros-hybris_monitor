@@ -32,7 +32,7 @@
 #include <ros/ros.h>
 #include <actionlib/client/action_client.h>
 
-#include <continual_planning_executive/ContinualPlanningStatus.h>
+#include <continual_planning_msgs/ContinualPlanningStatus.h>
 #include <fawkes_msgs/SkillStatus.h>
 #include <std_msgs/String.h>
 
@@ -50,7 +50,7 @@ class HybrisMonitorGtkWindow : public Gtk::Window
 
   void on_config_changed();
   //void ros_skiller_graphmsg_cb(const skiller::Graph::ConstPtr &msg);
-  void planner_status_cb(const continual_planning_executive::ContinualPlanningStatus &status);
+  void planner_status_cb(const continual_planning_msgs::ContinualPlanningStatus &status);
   void on_planner_status_cb();
   void skiller_status_cb(const fawkes_msgs::SkillStatus &status);
   void on_skiller_status_cb();
@@ -96,7 +96,7 @@ class HybrisMonitorGtkWindow : public Gtk::Window
   ros::Subscriber sub_agent_info_;
 
   boost::mutex msgmtx_planner_status_;
-  std::queue<continual_planning_executive::ContinualPlanningStatus> msgq_planner_status_;
+  std::queue<continual_planning_msgs::ContinualPlanningStatus> msgq_planner_status_;
 
   boost::mutex msgmtx_skiller_status_;
   std::queue<fawkes_msgs::SkillStatus> msgq_skiller_status_;
