@@ -55,6 +55,7 @@ HybrisMonitorGtkWindow::HybrisMonitorGtkWindow(BaseObjectType* cobject,
   builder->get_widget("lab_skill", lab_skill_);
   builder->get_widget("trv_plan", trv_plan_);
   builder->get_widget("window_plan", window_plan_);
+  builder->get_widget("lab_plan_status", lab_plan_status_);
 
   plan_list_ = Gtk::ListStore::create(plan_record_);
   trv_plan_->set_model(plan_list_);
@@ -181,6 +182,13 @@ HybrisMonitorGtkWindow::on_planner_status_cb()
 	Gtk::TreeModel::Row row;
 	row = *(plan_list_->append());
 	row[plan_record_.step] = strs[i];
+      }
+
+      if (strs.empty()) {
+	      lab_plan_status_->set_text("");
+      } else {
+	      std::string status_string = "Plan size: " + std::to_string(strs.size());
+	      lab_plan_status_->set_text(status_string);
       }
     }
     break;
@@ -321,6 +329,7 @@ HybrisMonitorGtkWindow::on_agent_info_cb()
     lab_agent_before_->set_text("");
     lab_skill_->set_text("");
     plan_list_->clear();
+    lab_plan_status_->set_text("");
   } else {
     lab_agent_before_->set_text(lab_agent_now_->get_text());
     lab_agent_now_->set_text(info.data);
