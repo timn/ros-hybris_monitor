@@ -55,7 +55,7 @@ endif()
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES rcll_refbox_peer
-#  CATKIN_DEPENDS rcll_msgs roscpp
+  CATKIN_DEPENDS roscpp continual_planning_msgs fawkes_msgs
 #  DEPENDS system_lib
 )
 
@@ -77,3 +77,5 @@ link_libraries(${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GUI_LIBRARIES} ${GRAPHVI
 
 ## Declare a C++ executable
 add_executable(hybris_monitor src/main.cpp src/hybris_monitor.cpp)
+
+add_dependencies(hybris_monitor ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
